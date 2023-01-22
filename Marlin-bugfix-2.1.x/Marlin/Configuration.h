@@ -163,7 +163,7 @@
 #define Z_DRIVER_TYPE  TMC2209
 //#define X2_DRIVER_TYPE TMC2209
 //#define Y2_DRIVER_TYPE TMC2209
-//#define Z2_DRIVER_TYPE TMC2209
+#define Z2_DRIVER_TYPE TMC2209
 //#define Z3_DRIVER_TYPE TMC2209
 //#define Z4_DRIVER_TYPE TMC2209
 //#define I_DRIVER_TYPE  A4988
@@ -1536,7 +1536,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -44, -5, -2.8 }
+#define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1747,15 +1747,15 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE 358
-#define Y_BED_SIZE 370
+#define X_BED_SIZE 363
+#define Y_BED_SIZE 367
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
-#define X_MIN_POS  8
-#define Y_MIN_POS -1
+#define X_MIN_POS  10
+#define Y_MIN_POS  3
 #define Z_MIN_POS  0
-#define X_MAX_POS  X_BED_SIZE + X_MIN_POS
-#define Y_MAX_POS  Y_BED_SIZE + Y_MIN_POS
+#define X_MAX_POS  373
+#define Y_MAX_POS  370
 #define Z_MAX_POS  405        + Z_MIN_POS
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
@@ -2036,9 +2036,9 @@
   //========================= Unified Bed Leveling ============================
   //===========================================================================
 
-  //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
+  #define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
-  #define MESH_INSET 1              // Set Mesh bounds as an inset region of the bed
+  #define MESH_INSET 10              // Set Mesh bounds as an inset region of the bed
   #define GRID_MAX_POINTS_X 5       // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
@@ -2050,7 +2050,7 @@
   //#define UBL_Z_RAISE_WHEN_OFF_MESH 2.5 // When the nozzle is off the mesh, this value is used
                                           // as the Z-Height correction value.
 
-  //#define UBL_MESH_WIZARD         // Run several commands in a row to get a complete mesh
+  #define UBL_MESH_WIZARD         // Run several commands in a row to get a complete mesh
 
 #elif ENABLED(MESH_BED_LEVELING)
 
@@ -2082,7 +2082,7 @@
 #define LCD_BED_TRAMMING
 
 #if ENABLED(LCD_BED_TRAMMING)
-  #define BED_TRAMMING_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
+  #define BED_TRAMMING_INSET_LFRB { 20, 27, 26, 28 } // (mm) Left, Front, Right, Back insets
   #define BED_TRAMMING_HEIGHT      0.0        // (mm) Z height of nozzle at leveling points
   #define BED_TRAMMING_Z_HOP       4.0        // (mm) Z height of nozzle between leveling points
   //#define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
@@ -2110,7 +2110,7 @@
    *  |  1       2  |   | 1         4 |    | 1         2 |   | 2           |
    *  LF --------- RF   LF --------- RF    LF --------- RF   LF --------- RF
    */
-  #define BED_TRAMMING_LEVELING_ORDER { LF, RF, RB, LB }
+  #define BED_TRAMMING_LEVELING_ORDER { LF, RB, LB, RF }
 #endif
 
 /**
@@ -2146,8 +2146,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 188  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 186  // Y point for Z homing
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
